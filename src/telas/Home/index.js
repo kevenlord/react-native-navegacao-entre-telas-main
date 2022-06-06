@@ -18,7 +18,6 @@ export default function Produtores({melhoresProdutores}) {
       </>
     );
   };
-
   return (
     <FlatList
       data={lista}
@@ -29,7 +28,6 @@ export default function Produtores({melhoresProdutores}) {
     />
   );
 }
-
 const estilos = StyleSheet.create({
   lista: {
     backgroundColor: '#ffffff',
