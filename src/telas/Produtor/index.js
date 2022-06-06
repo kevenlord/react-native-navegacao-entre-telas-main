@@ -2,14 +2,40 @@
 /* eslint-disable semi */
 import React from 'react';
 import { useRoute } from '@react-navigation/native';
+import useTextos from '../../hooks/useTextos';
 
-import {Text, StyleSheet} from 'react-native';
+import {FlatList, StyleSheet, View, Image, Text} from 'react-native';
+
+import Cesta from './componentes/Cesta'
+import Topo from '../../componentes/Topo';
+
+import topo from '../../assets/produtores/topo.png'
 
 export default function Produtor(){
     const route = useRoute();
-    console.log(route.params)
+    const { tituloProdutor, tituloCestas } = useTextos();
+    const { nome, imagem, cestas } = route.params;
 
-    return <Text>Produtor</Text>
+    const TopoLista = () => {
+        return <>
+            <Topo titulo={tituloProdutor} imagem={topo} altura={150}/>
+            <View style={estilos.conteudo}>
+                <View style={estilos.logo}>
+                    <Image source={imagem} style={estilos.produtorImage}/>
+                    <Text style={estilos.produtor}>{nome}</Text>
+                </View>
+
+                <Text style={estilos.cestas}>{tituloCestas}</Text>
+            </View>
+        </>
+    }
+
+    return <FlatList
+            ListHeaderComponent={TopoLista}
+            data={cestas}
+            renderItem={({ item }) => <Cesta {...item} produtor={{nome, imagem}}/>}
+            style={estilos.lista}
+        />
 }
 
 const estilos = StyleSheet.create({
