@@ -1,6 +1,4 @@
 /* eslint-disable prettier/prettier */
-/* eslint-disable react/react-in-jsx-scope */
-/* eslint-disable prettier/prettier */
 import React from 'react';
 import Produtores from './Produtores';
 
